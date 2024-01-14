@@ -1,0 +1,10 @@
+dialog {
+  width: 40rem;
+  position: relative;
+}
+
+.closeButton {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+}

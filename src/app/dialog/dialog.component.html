@@ -1,0 +1,5 @@
+<dialog #dialog (keyup)="onKeyUp($event)">
+  <h2>{{ title }}</h2>
+  <button class="closeButton" (click)="closeDialog(false)">X</button>
+  <div class="content"><ng-content /></div>
+</dialog>
