@@ -67,5 +67,5 @@ describe('DialogComponent', () => {
     await user.click(screen.getByText('Custom button'));
     expect(screen.getByText('Test title')).not.toBeVisible();
     expect(closeSpy).toHaveBeenCalledWith('Custom result');
-  })
+  });
 });

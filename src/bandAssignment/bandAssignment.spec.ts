@@ -65,7 +65,6 @@ describe('bandAssignment', () => {
   it('adds plays prop to band', () => {
     const result = makePlays(original);
     expect(result.plays).toEqual(expected.plays);
-    console.log(result.plays);
   });
   it('makes expected', () => {
     const result = makeExpected(original);
