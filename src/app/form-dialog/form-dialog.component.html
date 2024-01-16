@@ -1,0 +1,27 @@
+<h2>Form Dialog Example</h2>
+<button (click)="open()">Open dialog</button>
+<app-dialog [title]="'Form Dialog'" (closed)="onClose($event)">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="inputContainer">
+      <label for="name">Name</label>
+      <input id="name" type="text" autocomplete="name" formControlName="name"/>
+    </div>
+    <div class="inputContainer">
+      <label for="age">Age</label>
+      <input id="age" type="text" step="1" formControlName="age"/>
+    </div>
+    <fieldset>
+      <legend>Favorite color</legend>
+      <input type="radio" id="blue" value="blue" formControlName="favoriteColor"/>
+      <label for="blue">Blue</label>
+      <input type="radio" id="red" value="red" formControlName="favoriteColor"/>
+      <label for="red">Red</label>
+      <input type="radio" id="green" value="green" formControlName="favoriteColor"/>
+      <label for="green">Green</label>
+    </fieldset>
+    <button type="submit">OK</button>
+    <button type="button" (click)="dismiss()">Cancel</button>
+  </form>
+</app-dialog>
+<p>{{ result }}</p>
+

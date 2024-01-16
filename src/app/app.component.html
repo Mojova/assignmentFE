@@ -1,9 +1,3 @@
 <h1>Dialog</h1>
-<button (click)="openDialog()">Open dialog</button>
-<app-dialog [title]="'Title'" (closed)="onClose($event)">
-  <p>Some content.</p>
-  <button (click)="closeDialog(true)">OK</button>
-  <button (click)="closeDialog(false)">Cancel</button>
-</app-dialog>
-<p>{{result}}</p>
-<router-outlet></router-outlet>
+<app-simple-dialog />
+<app-form-dialog />

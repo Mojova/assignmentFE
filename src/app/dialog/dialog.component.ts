@@ -1,6 +1,6 @@
 import {
   AfterViewInit,
-  Component,
+  Component, ContentChild,
   ElementRef,
   EventEmitter,
   Input,
@@ -17,24 +17,24 @@ import {
   templateUrl: './dialog.component.html',
   styleUrl: './dialog.component.css'
 })
-export class DialogComponent {
+export class DialogComponent<T> {
   @Input({required: true}) title!: string;
-  @Output() closed = new EventEmitter<boolean>();
+  /**
+   * The data emitted when the modal is closed. Undefined on modal dismiss (X button).
+   *
+   * Bug: This is not called on Esc, as the browser handles modal dismissal.
+   */
+  @Output() closed = new EventEmitter<T>();
+
   @ViewChild('dialog') dialogElement: ElementRef | undefined;
 
-  closeDialog($event: boolean) {
+  closeDialog(payload?: T) {
     this.dialogElement?.nativeElement.close();
-    this.closed.emit($event);
+    this.closed.emit(payload);
   }
 
   openDialog() {
     this.dialogElement?.nativeElement.showModal();
   }
-
-  onKeyUp($event: KeyboardEvent) {
-    if ($event.key === 'Escape') {
-      console.log('here')
-      this.closed.emit(false);
-    }
-  }
 }
+

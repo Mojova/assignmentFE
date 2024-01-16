@@ -4,6 +4,10 @@ export interface Member {
   plays: string[]
 }
 
+/**
+ * Object where instrument is key, names are the value.
+ * Assuming we need to be able to handle arbitrary instruments, e.g. ones that are not in the example band.
+ */
 interface Plays {
   [key: string]: string[]
 }
@@ -21,7 +25,7 @@ function deepCopy<T>(object: T): T {
   return JSON.parse(JSON.stringify(object));
 }
 
-export function makeAll(band: Band) {
+export function makeAll(band: Band): Band {
   const allMembers = band.members.current.concat(band.members.past);
   const allMembersSorted = allMembers.sort((memberA, memberB) => {
     if (memberA.age !== memberB.age) {
@@ -44,7 +48,7 @@ function convertMapToPlays(map: Map<string, string[]>): Plays {
   return plays;
 }
 
-export function makePlays(band: Band) {
+export function makePlays(band: Band): Band {
   const allMembers = band.members.current.concat(band.members.past);
   // A Map with instrument as key, array of names as value. Map forces unique keys, so no need for separate
   // filtering of duplicates.

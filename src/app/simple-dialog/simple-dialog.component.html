@@ -1,0 +1,8 @@
+<h2>Simple Dialog Example</h2>
+<button (click)="open()">Open dialog</button>
+<app-dialog [title]="'Simple Dialog'" (closed)="onClose($event)">
+  <p>Here is some content.</p>
+  <button (click)="close(true)">OK</button>
+  <button (click)="close(false)">Cancel</button>
+</app-dialog>
+<p>{{ result }}</p>
